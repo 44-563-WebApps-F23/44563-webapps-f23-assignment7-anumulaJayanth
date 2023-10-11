@@ -43,6 +43,9 @@
 	<input type="text" id="data">
 	<button onclick="makeNewDiv()">Add end</button>
 
+	<button id="addFrontButton">Add Front</button>
+  <button id="removeButton">Remove</button>
+
 
 </body>
 <script>
@@ -68,6 +71,30 @@ for (let i = 0; i < divs.length; i++) {
 		container.appendChild(element)
 
 	}
+
+	document.getElementById("removeButton").onclick = remove;
+
+    function remove() {
+      const mergerItems = document.getElementsByClassName("merger");
+      const length = mergerItems.length;
+
+      if (length > 0) {
+        const middleIndex = Math.floor(length / 2);
+        mergerItems[middleIndex].remove();
+      }
+    }
+
+    document.getElementById("addFrontButton").onclick = addFront;
+
+    function addFront() {
+      const newDiv = document.createElement("div");
+      newDiv.className = "merger";
+      const inputValue = prompt("Enter text for the new element:");
+      newDiv.innerHTML = inputValue;
+
+      const container = document.getElementById("target");
+      container.insertBefore(newDiv, container.firstChild);
+    }
 </script>
 
 </html>
