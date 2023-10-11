@@ -79,8 +79,8 @@ for (let i = 0; i < divs.length; i++) {
       const length = mergerItems.length;
 
       if (length > 0) {
-        const middleIndex = Math.floor(length / 2);
-        mergerItems[middleIndex].remove();
+        const middle= Math.floor(length / 2);
+        mergerItems[middle].remove();
       }
     }
 
@@ -89,7 +89,7 @@ for (let i = 0; i < divs.length; i++) {
     function addFront() {
       const newDiv = document.createElement("div");
       newDiv.className = "merger";
-      const inputValue = prompt("Enter text for the new element:");
+      const inputValue = document.getElementById("data").value;
       newDiv.innerHTML = inputValue;
 
       const container = document.getElementById("target");
