@@ -21,7 +21,7 @@ body {
     background-color: rosybrown;
 }
 
-#locations,#penalty,#help,.fst-italic,.fw-semibold{
+#locations,#penalty,#help1,.fst-italic,.fw-semibold{
         border: 2px solid #000;
         background-color: #f0f0f0;
         margin-top: 5px;
@@ -58,9 +58,9 @@ body {
 
 <div id="penalty" class="fst-italic">Penalty is zero.</div>
 
-<div class="fst-italic" id="help" onclick="help()"> Click for help.</div>
+<div class="fst-italic" id="help11" > Click for help.</div>
 
-<div id="help" class="fst-italic"> Help report</div>
+<div id="help" class="fst-italic"> help report</div>
 
 <div class="row container mt-3">
     <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="0" onclick="check(0)"></div>
@@ -136,6 +136,7 @@ body {
       lastCheck = position; 
     }
 
+    document.getElementById("help1").onclick = help;
 
 
     function help() {
@@ -151,19 +152,19 @@ body {
       if (
         Math.abs(treasureRow - lastRow) + Math.abs(treasureCol - lastCol) == 1
       ) {
-        document.getElementById("help").innerText = "Can smell it";
-        document.getElementById("help").style.color = "red";
+        document.getElementById("help1").innerText = "Can smell it";
+        document.getElementById("help1").style.color = "red";
       }
 
       else if (
         Math.abs(treasureRow - lastRow) + Math.abs(treasureCol - lastCol) == 2
       ) {
-        document.getElementById("help").innerText = "Close Matie";
-        document.getElementById("help").style.color = "orange";
+        document.getElementById("help1").innerText = "Close Matie";
+        document.getElementById("help1").style.color = "orange";
       } else {
 
-        document.getElementById("help").innerText = "Step Faster";
-        document.getElementById("help").style.color = "black";
+        document.getElementById("help1").innerText = "Step Faster";
+        document.getElementById("help1").style.color = "black";
       }
 
       penalty += 2;
