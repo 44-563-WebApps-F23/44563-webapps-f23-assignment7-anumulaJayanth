@@ -44,28 +44,30 @@
 	<button onclick="makeNewDiv()">Add end</button>
 
 	<button id="addFrontButton">Add Front</button>
-  <button id="removeButton">Remove</button>
+	<button id="removeButton">Remove</button>
 
 
 </body>
 <script>
 
-const target = document.getElementById("target");
 
-
-const divs = target.getElementsByTagName("div");
-
-for (let i = 0; i < divs.length; i++) {
-  divs[i].className="merger";
-}
 
 
 	function makeNewDiv() {
 
+		const target = document.getElementById("target");
+
+
+		const divs = target.getElementsByTagName("div");
+
+		for (let i = 0; i < divs.length; i++) {
+			divs[i].className = "merger";
+		}
+
 		let element = document.createElement("div")
-		element.className="merger"
-        const input = document.getElementById("data").value;
-		element.innerHTML=input
+		element.className = "merger"
+		const input = document.getElementById("data").value;
+		element.innerHTML = input
 
 		let container = document.getElementById('target')
 		container.appendChild(element)
@@ -74,27 +76,27 @@ for (let i = 0; i < divs.length; i++) {
 
 	document.getElementById("removeButton").onclick = remove;
 
-    function remove() {
-      const mergerItems = document.getElementsByClassName("merger");
-      const length = mergerItems.length;
+	function remove() {
+		const mergerItems = document.getElementsByClassName("merger");
+		const length = mergerItems.length;
 
-      if (length > 0) {
-        const middle= Math.floor(length / 2);
-        mergerItems[middle].remove();
-      }
-    }
+		if (length > 0) {
+			const middle = Math.floor(length / 2);
+			mergerItems[middle].remove();
+		}
+	}
 
-    document.getElementById("addFrontButton").onclick = addFront;
+	document.getElementById("addFrontButton").onclick = addFront;
 
-    function addFront() {
-      const newDiv = document.createElement("div");
-      newDiv.className = "merger";
-      const inputValue = document.getElementById("data").value;
-      newDiv.innerHTML = inputValue;
+	function addFront() {
+		const newDiv = document.createElement("div");
+		newDiv.className = "merger";
+		const inputValue = document.getElementById("data").value;
+		newDiv.innerHTML = inputValue;
 
-      const container = document.getElementById("target");
-      container.insertBefore(newDiv, container.firstChild);
-    }
+		const container = document.getElementById("target");
+		container.insertBefore(newDiv, container.firstChild);
+	}
 </script>
 
 </html>

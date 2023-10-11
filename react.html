@@ -35,13 +35,21 @@ function recordTime() {
     }
     document.getElementById("reactButton").onclick = recordTime;
 
-    function startTime() {
 
+
+    function startTime() {
+      const randomValue = Math.floor(Math.random() * 9) + 2;
       for (let i = 0; i < 9; i++) {
         setTimeout(function() {
           document.getElementById("countdown").innerHTML = i; 
         }, (8 - i) * 1000);
       }
+
+      // for (let i = 0; i < 9; i++) {
+      //   setTimeout(function() {
+      //     document.getElementById("countdown").innerHTML = i; 
+      //   }, ( randomValue - i) * 1000);
+      // }
 
       setTimeout(function() {
         if (reactTime === undefined) {
