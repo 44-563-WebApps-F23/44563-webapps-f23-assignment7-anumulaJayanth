@@ -58,48 +58,123 @@ body {
 
 <div id="penalty" class="fst-italic">Penalty is zero.</div>
 
-<div class="fst-italic"> Click for help.</div>
+<div class="fst-italic" id="help" onclick="help()"> Click for help.</div>
 
 <div id="help" class="fst-italic"> Help report</div>
 
 <div class="row container mt-3">
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="0" onclick="check(0)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="1" onclick="check(1)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="2" onclick="check(2)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image"id="3" onclick="check(3)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="4" onclick="check(4)"></div>
 </div>
 <div class="row container">
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="5" onclick="check(5)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="6" onclick="check(6)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="7" onclick="check(7)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="8" onclick="check(8)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="9" onclick="check(9)"></div>
 </div>
 
 <div class="row container">
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="10" onclick="check(10)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="11" onclick="check(11)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="12" onclick="check(12)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="13" onclick="check(13)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="14" onclick="check(14)"></div>
 </div>
 <div class="row container">
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="15" onclick="check(15)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="16" onclick="check(16)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="17" onclick="check(17)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="18" onclick="check(18)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="19" onclick="check(19)"></div>
 </div>
 <div class="row container">
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
-    <div class="startImage"><img src="ter.jpg" alt="Starting Image"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="20" onclick="check(20)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="21" onclick="check(21)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="22" onclick="check(22)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="23" onclick="check(23)"></div>
+    <div class="startImage"><img src="ter.jpg" alt="Starting Image" id="24" onclick="check(24)"></div>
 </div>
 
+<script>
+    checkCount = 0;
+    penalty=0;
+    lastCheck=0;
+    treasureLocation=5;
+    trapLocation=18,
+    ids=["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]
+    gameOver=false;
 
+    function check(position) {
+      if (gameOver) return; 
+
+      const id = ids[position]; 
+      const img = document.getElementById(id); 
+
+      if (position == treasureLocation) {
+        img.src = "gold.jpg"; 
+        gameOver = true; 
+        penalty -= 3; 
+      } else if (position == trapLocation) {
+        img.src = "trap.jpg";
+        gameOver = true;
+        penalty += 4; 
+      } else {
+        img.src = "skull.jpg"; 
+      }
+
+      checkCount++; 
+      penalty++; 
+
+
+      document.getElementById("locations").innerHTML = `Locations: ${checkCount}`;
+      document.getElementById("penalty").innerHTML = `Penalty: ${penalty}`;
+
+      lastCheck = position; 
+    }
+
+
+
+    function help() {
+      const treasureRow = Math.floor(treasureLocation / 5);
+      console.log(treasureRow)
+      const treasureCol = treasureLocation % 5;
+      console.log(treasureCol)
+      const lastRow = Math.floor(lastCheck / 5);
+      console.log(lastRow)
+      const lastCol = lastCheck % 5;
+      console.log(lastCol)
+
+      if (
+        Math.abs(treasureRow - lastRow) + Math.abs(treasureCol - lastCol) == 1
+      ) {
+        document.getElementById("help").innerText = "Can smell it";
+        document.getElementById("help").style.color = "red";
+      }
+
+      else if (
+        Math.abs(treasureRow - lastRow) + Math.abs(treasureCol - lastCol) == 2
+      ) {
+        document.getElementById("help").innerText = "Close Matie";
+        document.getElementById("help").style.color = "orange";
+      } else {
+
+        document.getElementById("help").innerText = "Step Faster";
+        document.getElementById("help").style.color = "black";
+      }
+
+      penalty += 2;
+
+
+      document.getElementById("penalty").innerText = `Penalty: ${penalty}`;
+
+
+    }
+
+</script>
 
 </body>
 </html>
