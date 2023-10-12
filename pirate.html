@@ -122,6 +122,17 @@
             });
             gameOver = false;
 
+            function newGame() {
+                checkCount = 0;
+                penalty = 0;
+                treasureLocation = Math.floor(Math.random()*25);
+                trapLocation = Math.floor(Math.random()*25),
+                document.getElementById("locations").innerHTML = `Locations: ${checkCount}`;
+                document.getElementById("penalty").innerHTML = `Penalty: ${penalty}`;
+
+
+            }
+
 
             function check(position) {
                 if (gameOver) return;

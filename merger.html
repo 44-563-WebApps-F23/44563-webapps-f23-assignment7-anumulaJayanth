@@ -45,6 +45,7 @@
 
 	<button id="addFrontButton">Add Front</button>
 	<button id="removeButton">Remove</button>
+	<button id="swap" onclick="swap()">swap</button>
 
 
 </body>
@@ -96,6 +97,26 @@
 
 		const container = document.getElementById("target");
 		container.insertBefore(newDiv, container.firstChild);
+	}
+
+
+	//bonous
+	function swap() {
+
+
+
+		let mergerItems = document.getElementsByClassName("merger");
+
+		let length = mergerItems.length;
+
+		let mergerItem = document.getElementsByClassName("merger")[Math.floor(Math.random() * length)];
+
+		let container = document.getElementById("target");
+
+		container.insertBefore(mergerItem, container.firstChild);
+
+
+
 	}
 </script>
 
